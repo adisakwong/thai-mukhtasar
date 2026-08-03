@@ -41,7 +41,7 @@
   --radius-sm: 10px;
   --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
   --shadow-gold: 0 4px 20px rgba(229, 194, 120, 0.15);
-  --font-arabic: 'PDMS Saleem Quran', serif;
+  --font-arabic: 'KFGQPC Nastaleeq', serif;
   --font-thai: 'Bai Jamjuree', sans-serif;
   --font-ui: 'Plus Jakarta Sans', 'Noto Sans Thai', sans-serif;
   
@@ -76,13 +76,22 @@ body {
   max-width: 900px;
   margin: 0 auto;
   padding: 16px;
+  padding-top: 220px;
 }
 
 /* Header */
 header {
   text-align: center;
-  padding: 24px 16px 12px;
-  position: relative;
+  padding: 18px 16px 12px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 100%);
+  z-index: 1000;
+  background: rgba(13, 22, 36, 0.96);
+  border-bottom: 1px solid var(--border);
 }
 
 .bismillah-header {
@@ -125,17 +134,22 @@ header p span.badge {
 
 /* Navigation Bar */
 .surah-nav-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  margin: 20px 0 16px;
-  box-shadow: var(--shadow);
+  background: transparent;
+  border: none;
+  padding: 12px 0 0 0;
+  margin: 0;
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
+  position: static;
+  width: auto;
+}
+
+header .surah-nav-card {
+  width: 100%;
 }
 
 .surah-info-center {
@@ -145,40 +159,18 @@ header p span.badge {
 }
 
 .surah-badge-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-
-.surah-num-tag {
-  background: linear-gradient(135deg, var(--green-dim), var(--green));
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 2px 10px;
-  border-radius: 20px;
-  box-shadow: var(--green-glow);
-}
-
-.surah-type-tag {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text2);
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-}
-
-.surah-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   margin-bottom: 4px;
+   padding: 4px 10px;
+   border-radius: 24px;
+   transition: all 0.2s ease;
+ }
+ 
+ .surah-badge-row {
+   background: transparent;
+ }
 .surah-title-th {
   font-size: 22px;
   font-weight: 700;
@@ -260,6 +252,31 @@ header p span.badge {
   color: #fff;
 }
 .btn-gold:hover { filter: brightness(1.15); }
+
+/* Prominent settings button */
+.btn-settings {
+  background: linear-gradient(135deg, rgba(229,194,120,0.14), rgba(229,194,120,0.06));
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(229,194,120,0.08);
+}
+.btn-settings:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(229,194,120,0.14);
+}
+
+.btn-hamburger {
+  display: none;
+  min-width: 44px;
+  padding: 10px 12px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+
+.btn-hamburger:hover {
+  background: var(--surface-hover);
+}
 
 /* Control Panel Bar */
 .control-bar {
@@ -432,6 +449,20 @@ header p span.badge {
   border-bottom: 1px dashed var(--border);
 }
 
+/* make space for a centered header element */
+.ayah-card-header > .ayah-badge { flex: none; }
+.ayah-card-header > .ayah-actions { flex: none; }
+.ayah-header-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  min-width: 0;
+  overflow: hidden;
+}
+.ayah-header-center .ayah-theme { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+
 .ayah-badge {
   display: inline-flex;
   align-items: center;
@@ -511,6 +542,39 @@ header p span.badge {
 .translation-block {
   margin-top: 10px;
 }
+
+/* Theme block to highlight thematic subject of the ayah */
+.theme-block {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: linear-gradient(180deg, rgba(229,194,120,0.03), rgba(16,185,129,0.02));
+  border: 1px solid rgba(255,255,255,0.03);
+  border-left: 4px solid var(--gold);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.theme-block .lang-label { color: var(--gold); }
+.ayah-theme {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--gold-dim);
+  font-weight: 700;
+  margin-top: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(229,194,120,0.12) 0%, rgba(229,194,120,0.06) 100%);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.16);
+  border: 1px solid rgba(229,194,120,0.08);
+}
+
+.ayah-theme::before {
+  content: '🎯 ';
+  margin-right: 6px;
+  opacity: 0.95;
+}
+
+.theme-block:hover { transform: translateY(-2px); border-color: var(--gold-dim); }
 
 .lang-label {
   font-size: 11px;
@@ -810,13 +874,27 @@ header p span.badge {
 
 /* Media Queries */
 @media (max-width: 640px) {
-  #app { padding: 10px; }
+  #app { padding: 10px; padding-top: 250px; }
   header h1 { font-size: 24px; }
-  .surah-nav-card { padding: 12px; flex-wrap: wrap; }
+  .surah-nav-card { padding: 12px; flex-wrap: wrap; top: 108px; }
   .surah-info-center { order: -1; width: 100%; margin-bottom: 6px; }
   .surah-title-th { font-size: 19px; }
   .surah-title-ar { font-size: 20px; }
-  .btn-nav, .btn-sel { padding: 8px 12px; font-size: 12px; }
+  .btn-nav, .btn-sel, .btn-action, .btn-settings { padding: 8px 12px; font-size: 12px; }
+  .btn-hamburger { display: inline-flex; }
+  .nav-actions {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .surah-nav-card.nav-open .nav-actions {
+    display: flex;
+  }
+  .surah-nav-card.nav-open {
+    margin-bottom: 0;
+  }
   .control-bar { padding: 12px; gap: 10px; }
   .toggle-group { width: 100%; justify-content: space-between; }
   .tool-group { width: 100%; justify-content: space-between; }

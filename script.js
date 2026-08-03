@@ -22,6 +22,11 @@
   var currentPlayingKey = null;
   var isAutoPlayingSurah = false;
   var bookmarks = JSON.parse(localStorage.getItem('quran_bookmarks') || '[]');
+  var appSettings = JSON.parse(localStorage.getItem('quran_settings') || '{}');
+
+  if(!appSettings.arabicFont) {
+    appSettings.arabicFont = 'KFGQPC Nastaleeq';
+  }
 
   // Helper Elements
   function $(s) { return document.querySelector(s); }
@@ -152,17 +157,8 @@
   }
 
   function updateSurahInfo(s) {
-    $('#surahBadge').textContent = 'ซูเราะห์ที่ ' + s.id;
-    $('#surahName').textContent = SURAH_TH[s.id] || s.ns;
-    $('#surahNameAr').textContent = s.ar;
     $('#surahNameEn').textContent = s.ns;
     $('#surahAyahCount').textContent = s.vc + ' อายะฮ์';
-    $('#surahType').textContent = s.rp === 'makkah' ? 'มักกียะฮ์' : 'มะดีนียะฮ์';
-
-    var prevBtn = $('#prevSurah');
-    var nextBtn = $('#nextSurah');
-    if(prevBtn) prevBtn.disabled = (s.id === 1);
-    if(nextBtn) nextBtn.disabled = (s.id === 114);
   }
 
   function stopAudio() {
@@ -314,6 +310,151 @@
     }
   }
 
+  // Settings handling
+  function loadAppSettings() {
+    appSettings = JSON.parse(localStorage.getItem('quran_settings') || '{}');
+    // apply language visibility settings if present
+    if(appSettings && typeof appSettings.arabicEnabled !== 'undefined') showArabic = !!appSettings.arabicEnabled;
+    if(appSettings && typeof appSettings.thaiEnabled !== 'undefined') showThai = !!appSettings.thaiEnabled;
+    if(appSettings && typeof appSettings.englishEnabled !== 'undefined') showEnglish = !!appSettings.englishEnabled;
+  }
+
+  function saveAppSettings() {
+    localStorage.setItem('quran_settings', JSON.stringify(appSettings || {}));
+  }
+
+  function openSettingsModal() {
+    renderSettingsModal();
+    $('#settingsModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSettingsModal() {
+    $('#settingsModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function renderSettingsModal() {
+    loadAppSettings();
+    var sSelect = $('#settingsSurahSelect');
+    var aInput = $('#settingsAyahInput');
+    if(sSelect) {
+      if(sSelect.options.length <= 1) {
+        sSelect.innerHTML = '<option value="">เลือกซูเราะห์</option>';
+        for(var i = 0; i < SURAH.length; i++) {
+          var option = document.createElement('option');
+          var surah = SURAH[i];
+          var surahNumber = surah.id;
+          var thaiName = SURAH_TH[surah.id] || surah.ns;
+          var arabicName = surah.ns;
+          var label = surahNumber + '. ' + thaiName + ' (' + arabicName + ')';
+          option.value = surahNumber;
+          option.textContent = label;
+          sSelect.appendChild(option);
+        }
+      }
+      sSelect.value = appSettings.defaultSurah || '';
+    }
+    if(aInput) aInput.value = appSettings.defaultAyah || '';
+    var fontSelect = $('#settingsArabicFontSelect');
+    var arabicSize = $('#settingsArabicSizeInput');
+    var transSize = $('#settingsTranslationSizeInput');
+    if(fontSelect) fontSelect.value = appSettings.arabicFont || '';
+    if(arabicSize) arabicSize.value = appSettings.arabicFontSize || arabicFontSize;
+    if(transSize) transSize.value = appSettings.translationFontSize || translationFontSize;
+    // language toggles
+    var tArabic = $('#toggleArabic');
+    var tThai = $('#toggleThai');
+    var tEnglish = $('#toggleEnglish');
+    if(tArabic) tArabic.checked = (typeof appSettings.arabicEnabled !== 'undefined') ? !!appSettings.arabicEnabled : showArabic;
+    if(tThai) tThai.checked = (typeof appSettings.thaiEnabled !== 'undefined') ? !!appSettings.thaiEnabled : showThai;
+    if(tEnglish) tEnglish.checked = (typeof appSettings.englishEnabled !== 'undefined') ? !!appSettings.englishEnabled : showEnglish;
+  }
+
+  function saveSettingsFromUI() {
+    var s = parseInt($('#settingsSurahSelect').value, 10);
+    var a = parseInt($('#settingsAyahInput').value, 10);
+    if(s && s >= 1 && s <= 114) {
+      appSettings.defaultSurah = s;
+    } else {
+      delete appSettings.defaultSurah;
+    }
+    if(a && a > 0) appSettings.defaultAyah = a; else delete appSettings.defaultAyah;
+    var fontSel = $('#settingsArabicFontSelect');
+    var aSize = parseInt($('#settingsArabicSizeInput').value, 10);
+    var tSize = parseInt($('#settingsTranslationSizeInput').value, 10);
+    if(fontSel && fontSel.value) {
+      appSettings.arabicFont = fontSel.value;
+      document.documentElement.style.setProperty('--font-arabic', "'" + fontSel.value + "'");
+    } else {
+      delete appSettings.arabicFont;
+    }
+    if(aSize && aSize > 0) { appSettings.arabicFontSize = aSize; arabicFontSize = aSize; }
+    else delete appSettings.arabicFontSize;
+    if(tSize && tSize > 0) { appSettings.translationFontSize = tSize; translationFontSize = tSize; }
+    else delete appSettings.translationFontSize;
+    applyFontSizes();
+    // save language visibility choices
+    var tArabic = $('#toggleArabic');
+    var tThai = $('#toggleThai');
+    var tEnglish = $('#toggleEnglish');
+    if(tArabic) { appSettings.arabicEnabled = !!tArabic.checked; showArabic = !!tArabic.checked; }
+    if(tThai) { appSettings.thaiEnabled = !!tThai.checked; showThai = !!tThai.checked; }
+    if(tEnglish) { appSettings.englishEnabled = !!tEnglish.checked; showEnglish = !!tEnglish.checked; }
+    renderSurah();
+    saveAppSettings();
+    showToast('บันทึกการตั้งค่าแล้ว');
+    closeSettingsModal();
+    if(appSettings.defaultSurah) {
+      currentSurah = appSettings.defaultSurah;
+      renderSurah();
+      if(appSettings.defaultAyah) {
+        setTimeout(function() {
+          var target = document.querySelector('.ayah-card[data-key="' + currentSurah + ':' + appSettings.defaultAyah + '"]');
+          if(target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 220);
+      }
+    }
+  }
+
+  function saveCurrentAsDefault() {
+    appSettings.defaultSurah = currentSurah;
+    var ay = getVisibleAyah();
+    if(ay && ay > 0) appSettings.defaultAyah = ay; else delete appSettings.defaultAyah;
+    saveAppSettings();
+    showToast('ตั้งค่าตำแหน่งปัจจุบันเป็นค่าเริ่มต้นแล้ว');
+    closeSettingsModal();
+  }
+
+  // Find the ayah card nearest to the viewport center
+  function getVisibleAyah() {
+    var cards = document.querySelectorAll('.ayah-card');
+    if(!cards || !cards.length) return null;
+    var best = null; var bestDist = Infinity;
+    var vpCenter = window.innerHeight / 2;
+    for(var i = 0; i < cards.length; i++) {
+      var r = cards[i].getBoundingClientRect();
+      var cardCenter = r.top + (r.height / 2);
+      var d = Math.abs(cardCenter - vpCenter);
+      if(d < bestDist) { bestDist = d; best = cards[i]; }
+    }
+    if(best) {
+      var key = best.getAttribute('data-key');
+      if(!key) return null;
+      var parts = key.split(':');
+      return parseInt(parts[1], 10) || null;
+    }
+    return null;
+  }
+
+  function clearDefaultPosition() {
+    delete appSettings.defaultSurah;
+    delete appSettings.defaultAyah;
+    saveAppSettings();
+    showToast('ล้างค่าตำแหน่งเริ่มต้นแล้ว');
+    closeSettingsModal();
+  }
+
   function renderSurah() {
     var info = getSurahInfo(currentSurah);
     if(info) updateSurahInfo(info);
@@ -406,6 +547,25 @@
         card.appendChild(enBlock);
       }
 
+      // Insert thematic pill into header center (if helper exists)
+      try {
+        if(typeof getAyatThemes === 'function') {
+          var themes = getAyatThemes(currentSurah, v, 'th') || [];
+          if(themes && themes.length) {
+            var headerCenter = header.querySelector('.ayah-header-center');
+            if(!headerCenter) {
+              headerCenter = el('div', 'ayah-header-center');
+              header.insertBefore(headerCenter, header.querySelector('.ayah-actions'));
+            }
+            var pill = el('div', 'ayah-theme');
+            pill.textContent = themes.join(', ');
+            headerCenter.appendChild(pill);
+          }
+        }
+      } catch(e) {
+        console.warn('Error getting themes for', currentSurah + ':' + v, e);
+      }
+
       container.appendChild(card);
       mushafHTML += '<span class="mushaf-word">' + arabicTxt + '</span> <span class="mushaf-ayah-num">' + v + '</span> ';
     }
@@ -421,11 +581,13 @@
   }
 
   function initEvents() {
-    $('#prevSurah').addEventListener('click', function() {
+    var prevEl = $('#prevSurah');
+    if(prevEl) prevEl.addEventListener('click', function() {
       if(currentSurah > 1) selectSurah(currentSurah - 1);
     });
 
-    $('#nextSurah').addEventListener('click', function() {
+    var nextEl = $('#nextSurah');
+    if(nextEl) nextEl.addEventListener('click', function() {
       if(currentSurah < 114) selectSurah(currentSurah + 1);
     });
 
@@ -441,23 +603,24 @@
 
     $('#toggleArabic').addEventListener('change', function() {
       showArabic = this.checked;
+      appSettings.arabicEnabled = !!this.checked;
+      saveAppSettings();
       renderSurah();
     });
     $('#toggleThai').addEventListener('change', function() {
       showThai = this.checked;
+      appSettings.thaiEnabled = !!this.checked;
+      saveAppSettings();
       renderSurah();
     });
     $('#toggleEnglish').addEventListener('change', function() {
       showEnglish = this.checked;
+      appSettings.englishEnabled = !!this.checked;
+      saveAppSettings();
       renderSurah();
     });
 
-    var arabicFontSelect = $('#arabicFontSelect');
-    if (arabicFontSelect) {
-      arabicFontSelect.addEventListener('change', function() {
-        document.documentElement.style.setProperty('--font-arabic', "'" + this.value + "'");
-      });
-    }
+    // font selection moved into Settings modal
 
     $('#btnToggleMode').addEventListener('click', function() {
       isMushafMode = !isMushafMode;
@@ -481,32 +644,15 @@
       }
     });
 
-    $('#btnFontInc').addEventListener('click', function() {
-      if(arabicFontSize < 48) {
-        arabicFontSize += 2;
-        translationFontSize += 1;
-        applyFontSizes();
-      }
-    });
-    $('#btnFontDec').addEventListener('click', function() {
-      if(arabicFontSize > 22) {
-        arabicFontSize -= 2;
-        translationFontSize -= 1;
-        applyFontSizes();
-      }
-    });
+    var btnToggleNav = $('#btnToggleNav');
+    if(btnToggleNav) {
+      btnToggleNav.addEventListener('click', function() {
+        var navCard = document.querySelector('.surah-nav-card');
+        if(navCard) navCard.classList.toggle('nav-open');
+      });
+    }
 
-    $('#btnJumpAyah').addEventListener('click', function() {
-      var val = parseInt($('#jumpAyahInput').value, 10);
-      if(val && val > 0) {
-        var target = document.getElementById('ayah-' + val);
-        if(target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          showToast('ไม่พบอายะฮ์ที่ ' + val);
-        }
-      }
-    });
+    // Font size and jump-to-ayah controls moved into Settings modal.
 
     var searchInSurahInput = $('#searchInSurah');
     if (searchInSurahInput) {
@@ -520,6 +666,26 @@
       $('#bookmarksModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     });
+
+    // Settings button
+    var btnOpenSettings = $('#btnOpenSettings');
+    if(btnOpenSettings) {
+      btnOpenSettings.addEventListener('click', function() {
+        openSettingsModal();
+      });
+    }
+
+    $('#closeSettingsModal').addEventListener('click', function() {
+      closeSettingsModal();
+    });
+
+    $('#settingsModal').addEventListener('click', function(e) {
+      if(e.target === this) closeSettingsModal();
+    });
+
+    $('#btnSaveSettings').addEventListener('click', function() { saveSettingsFromUI(); });
+    $('#btnSaveCurrentAsDefault').addEventListener('click', function() { saveCurrentAsDefault(); });
+    $('#btnClearDefault').addEventListener('click', function() { clearDefaultPosition(); });
 
     $('#closeBookmarksModal').addEventListener('click', function() {
       $('#bookmarksModal').classList.remove('active');
@@ -551,9 +717,30 @@
   }
 
   try {
+    loadAppSettings();
+    if(appSettings && appSettings.defaultSurah) {
+      currentSurah = parseInt(appSettings.defaultSurah, 10) || currentSurah;
+    }
+    // apply saved font settings
+    if(appSettings && appSettings.arabicFont) {
+      document.documentElement.style.setProperty('--font-arabic', "'" + appSettings.arabicFont + "'");
+    }
+    if(appSettings && appSettings.arabicFontSize) {
+      arabicFontSize = parseInt(appSettings.arabicFontSize, 10) || arabicFontSize;
+    }
+    if(appSettings && appSettings.translationFontSize) {
+      translationFontSize = parseInt(appSettings.translationFontSize, 10) || translationFontSize;
+    }
     initEvents();
     renderSurahGrid('');
     renderSurah();
+    // If default ayah set, scroll to it after render
+    if(appSettings && appSettings.defaultAyah) {
+      setTimeout(function() {
+        var target = document.querySelector('.ayah-card[data-key="' + currentSurah + ':' + appSettings.defaultAyah + '"]');
+        if(target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 220);
+    }
     $('#loading-msg').style.display = 'none';
   } catch(e) {
     $('#loading-msg').innerHTML = '<div style="color:#ef4444">เกิดข้อผิดพลาดในการโหลด: ' + e.message + '</div>';

@@ -14,72 +14,35 @@
 
 <div id="app">
   <header>
-  <div class="bismillah-header">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-  <h1>อัลกุรอาน-ตัฟซีรมุคตะศ็อร</h1>
-  <p>
-    <span class="badge">เวอร์ชัน 1.0</span>
-    <span>เลือกฟอนต์อาหรับ:</span>
-    <select id="arabicFontSelect" style="background: var(--bg2); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 4px;">
-      <option value="Uthmanic Hafs">Uthmanic Hafs</option>
-      <option value="KFGQPC Nastaleeq">KFGQPC Nastaleeq</option>
-      <option value="PDMS Saleem Quran">PDMS Saleem Quran</option>
-    </select>
-  </p>
-</header>
+    <h1>อัลกุรอาน-ตัฟซีรมุคตะศ็อร</h1>
+  <!-- <p>
+  <span class="badge">by Tech for Ummah v.1.1</span>
+  </p> -->
+
+
   <!-- Surah Navigation Bar -->
   <div class="surah-nav-card">
-    <button class="btn-nav" id="prevSurah" title="ซูเราะห์ก่อนหน้า">◀ ก่อนหน้า</button>
+    <!-- previous/next removed per request -->
     <div class="surah-info-center">
       <div class="surah-badge-row">
-        <span class="surah-num-tag" id="surahBadge">ซูเราะห์ที่ 1</span>
-        <span class="surah-type-tag" id="surahType">มักกียะฮ์</span>
         <div class="surah-sub-meta">
           <span id="surahNameEn">Al-Fatihah</span>
           <span>•</span>
           <span id="surahAyahCount">7 อายะฮ์</span>
         </div>
       </div>
-      <div class="surah-title-row">
-        <h2 class="surah-title-th" id="surahName">อัลฟาติฮะห์</h2>
-        <div class="surah-title-ar" id="surahNameAr">الفاتحة</div>
-      </div>
     </div>
     <button class="btn-sel" id="openSurahSel">📖 เลือกซูเราะห์</button>
-    <button class="btn-nav" id="nextSurah" title="ซูเราะห์ถัดไป">ถัดไป ▶</button>
-  </div>
-
-  <!-- Control Bar -->
-  <div class="control-bar">
-    <div class="toggle-group">
-      <label class="toggle-item"><input type="checkbox" id="toggleArabic" checked> อาหรับ</label>
-      <label class="toggle-item"><input type="checkbox" id="toggleThai" checked> ไทย</label>
-      <label class="toggle-item"><input type="checkbox" id="toggleEnglish"> English</label>
-    </div>
-
-    <div class="tool-group">
-      <!-- Mode Switch -->
+    <button class="btn-action btn-hamburger" id="btnToggleNav" title="เมนู">☰</button>
+    <div class="nav-actions">
       <button class="btn-action" id="btnToggleMode" title="เปลี่ยนรูปแบบการอ่าน">🎴 การ์ด</button>
-      
-      <!-- Play Surah -->
       <button class="btn-action" id="btnPlaySurah" title="ฟังเสียงอ่านทั้งซูเราะห์">▶ ฟังซูเราะห์</button>
-
-      <!-- Font Size Adjuster -->
-      <div class="font-size-ctrl">
-        <button class="font-size-btn" id="btnFontDec" title="ลดขนาดตัวอักษร">A-</button>
-        <button class="font-size-btn" id="btnFontInc" title="เพิ่มขนาดตัวอักษร">A+</button>
-      </div>
-
-      <!-- Jump to Ayah -->
-      <div class="jump-box">
-        <input type="number" id="jumpAyahInput" min="1" placeholder="อายะฮ์">
-        <button class="btn-action" id="btnJumpAyah" style="padding:6px 10px">ไป</button>
-      </div>
-
-      <!-- Bookmarks Button -->
       <button class="btn-action" id="btnOpenBookmarks" title="รายการโปรด">⭐</button>
+      <button class="btn-action btn-settings" id="btnOpenSettings" title="ตั้งค่า">⚙️ ตั้งค่า</button>
     </div>
   </div>
-
+</header>
+  
   <!-- Ayahs Render Area -->
   <div id="loading-msg">
     <div class="spinner"></div>
@@ -115,6 +78,48 @@
   </div>
 </div>
 
+<!-- Settings Modal -->
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h2>การตั้งค่า (Settings)</h2>
+      <button class="modal-close" id="closeSettingsModal">&times;</button>
+    </div>
+    <div style="padding:16px; display:flex; flex-direction:column; gap:8px">
+      <label>ตำแหน่งเริ่มต้น (Default position)</label>
+      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <select id="settingsSurahSelect" style="width:240px;padding:6px">
+          <option value="">เลือกซูเราะห์</option>
+        </select>
+        <input type="number" id="settingsAyahInput" min="1" placeholder="อายะฮ์ (ไม่บังคับ)" style="width:140px;padding:6px" />
+      </div>
+      <hr />
+        <label>การแสดงผลภาษา (Display languages)</label>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="toggleArabic"> อาหรับ</label>
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="toggleThai"> ไทย</label>
+          <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="toggleEnglish"> English</label>
+        </div>
+      <label>ฟอนต์และขนาด (Arabic font & sizes)</label>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <select id="settingsArabicFontSelect" style="padding:6px">
+          <option value="">(ระบบ)</option>
+          <option value="Uthmanic Hafs">Uthmanic Hafs</option>
+          <option value="KFGQPC Nastaleeq">KFGQPC Nastaleeq</option>
+          <option value="PDMS Saleem Quran">PDMS Saleem Quran</option>
+        </select>
+        <input type="number" id="settingsArabicSizeInput" min="16" max="64" style="width:90px;padding:6px" placeholder="ขนาดอาหรับ (px)" />
+        <input type="number" id="settingsTranslationSizeInput" min="10" max="36" style="width:110px;padding:6px" placeholder="ขนาดแปล (px)" />
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn-action" id="btnSaveSettings" style="padding:8px 12px">บันทึก</button>
+        <button class="btn-action" id="btnSaveCurrentAsDefault" style="padding:8px 12px">ตั้งค่าสถานะเป็นตำแหน่งปัจจุบัน</button>
+        <button class="btn-action" id="btnClearDefault" style="padding:8px 12px">ล้างค่าเริ่มต้น</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Toast Notification -->
 <div id="toast"></div>
 
@@ -123,6 +128,8 @@
 <script src="english-mukhtasar.js"></script>
 <script src="surah_data.js"></script>
 <script src="quran_uthmani_data.js"></script>
+<script src="maqasid_data.js"></script>
+<script src="maqasid_themes.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
