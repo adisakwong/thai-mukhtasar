@@ -37,6 +37,16 @@
     return e;
   }
 
+  function bind(selector, type, handler) {
+    var node = $(selector);
+    if(node) {
+      node.addEventListener(type, handler);
+    } else {
+      console.warn('Missing element for event binding:', selector);
+    }
+    return node;
+  }
+
   // Pre-build Ayah maps & Global Index mapping for audio
   var AYAH_MAP = {};
   var GLOBAL_AYAH_INDEX = {};
@@ -591,29 +601,29 @@
       if(currentSurah < 114) selectSurah(currentSurah + 1);
     });
 
-    $('#openSurahSel').addEventListener('click', openSurahModal);
-    $('#closeModal').addEventListener('click', closeSurahModal);
-    $('#surahModal').addEventListener('click', function(e) {
+    bind('#openSurahSel', 'click', openSurahModal);
+    bind('#closeModal', 'click', closeSurahModal);
+    bind('#surahModal', 'click', function(e) {
       if(e.target === this) closeSurahModal();
     });
 
-    $('#surahSearch').addEventListener('input', function() {
+    bind('#surahSearch', 'input', function() {
       renderSurahGrid(this.value);
     });
 
-    $('#toggleArabic').addEventListener('change', function() {
+    bind('#toggleArabic', 'change', function() {
       showArabic = this.checked;
       appSettings.arabicEnabled = !!this.checked;
       saveAppSettings();
       renderSurah();
     });
-    $('#toggleThai').addEventListener('change', function() {
+    bind('#toggleThai', 'change', function() {
       showThai = this.checked;
       appSettings.thaiEnabled = !!this.checked;
       saveAppSettings();
       renderSurah();
     });
-    $('#toggleEnglish').addEventListener('change', function() {
+    bind('#toggleEnglish', 'change', function() {
       showEnglish = this.checked;
       appSettings.englishEnabled = !!this.checked;
       saveAppSettings();
@@ -622,7 +632,7 @@
 
     // font selection moved into Settings modal
 
-    $('#btnToggleMode').addEventListener('click', function() {
+    bind('#btnToggleMode', 'click', function() {
       isMushafMode = !isMushafMode;
       if(isMushafMode) {
         this.innerHTML = '📖 มุศหัฟ';
@@ -635,7 +645,7 @@
       }
     });
 
-    $('#btnPlaySurah').addEventListener('click', function() {
+    bind('#btnPlaySurah', 'click', function() {
       if(isAutoPlayingSurah) {
         stopAudio();
       } else {
@@ -661,13 +671,12 @@
       });
     }
 
-    $('#btnOpenBookmarks').addEventListener('click', function() {
+    bind('#btnOpenBookmarks', 'click', function() {
       renderBookmarksModal();
       $('#bookmarksModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     });
 
-    // Settings button
     var btnOpenSettings = $('#btnOpenSettings');
     if(btnOpenSettings) {
       btnOpenSettings.addEventListener('click', function() {
@@ -675,24 +684,24 @@
       });
     }
 
-    $('#closeSettingsModal').addEventListener('click', function() {
+    bind('#closeSettingsModal', 'click', function() {
       closeSettingsModal();
     });
 
-    $('#settingsModal').addEventListener('click', function(e) {
+    bind('#settingsModal', 'click', function(e) {
       if(e.target === this) closeSettingsModal();
     });
 
-    $('#btnSaveSettings').addEventListener('click', function() { saveSettingsFromUI(); });
-    $('#btnSaveCurrentAsDefault').addEventListener('click', function() { saveCurrentAsDefault(); });
-    $('#btnClearDefault').addEventListener('click', function() { clearDefaultPosition(); });
+    bind('#btnSaveSettings', 'click', function() { saveSettingsFromUI(); });
+    bind('#btnSaveCurrentAsDefault', 'click', function() { saveCurrentAsDefault(); });
+    bind('#btnClearDefault', 'click', function() { clearDefaultPosition(); });
 
-    $('#closeBookmarksModal').addEventListener('click', function() {
+    bind('#closeBookmarksModal', 'click', function() {
       $('#bookmarksModal').classList.remove('active');
       document.body.style.overflow = '';
     });
 
-    $('#bookmarksModal').addEventListener('click', function(e) {
+    bind('#bookmarksModal', 'click', function(e) {
       if(e.target === this) {
         $('#bookmarksModal').classList.remove('active');
         document.body.style.overflow = '';
