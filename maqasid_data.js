@@ -6702,15 +6702,15 @@ window.QURAN_MAP_DATA = [
     "max_ayat": 7,
     "thematic_ayat": [{
       "ayat_range": "1-3",
-      "theme": "เจ้าเห็นผู้ที่ปฏิเสธวันตอบแทนและการชำระบัญชีไหม? เขาคือผู้ที่ขับไล่ไสส่งเด็กกำพร้าอย่างโหดร้าย และไม่สนับสนุนชักชวนกันให้อาหารแก่คนยากจนขัดสน",
-      "theme_en": "Have you seen the one who denies the Day of Recompense and Reckoning? That is the one who harshly drives away the orphan, and does not encourage (others) to feed the poor.",
-      "theme_ms": "Tidakkah engkau melihat orang yang mendustakan Hari Pembalasan dan Perhitungan? Dialah orang yang menghalau anak yatim dengan kejam, dan tidak menganjurkan (orang lain) untuk memberi makan kepada orang miskin."
+      "theme": "ลักษณะของผู้ปฏิเสธโลกหน้า",
+      "theme_en": "Characteristics of those who deny the afterlife.",
+      "theme_ms": "Ciri-ciri orang yang mendustakan akhirat."
     },
     {
       "ayat_range": "4-7",
-      "theme": "ความวิบัติจงประสบแด่ผู้ทำละหมาด! คือบรรดาผู้ที่ละเลยและสะเพร่าต่อการละหมาดของพวกเขา บรรดาผู้ที่ทำความดีเพื่อโอ้อวดและแสดงตน (ริยาอ์) และบรรดาผู้ที่ตระหนี่ถี่เหนียวแม้กระทั่งการให้หยิบยืมสิ่งของเครื่องใช้เล็ก ๆ น้อย ๆ (อัลมาอูน)",
-      "theme_en": "So woe unto those who perform prayer – [but] who are neglectful and careless in their prayers, who make a show of their deeds (for ostentation), and who withhold [even] small acts of kindness, such as lending utensils and everyday items (al-ma'un).",
-      "theme_ms": "Maka celakalah bagi orang-orang yang mendirikan solat, iaitu mereka yang lalai daripada solatnya, mereka yang riyak (ingin dilihat orang), dan mereka yang menghalang (menolak) memberi bantuan barang-barang kecil (al-ma'un)."
+      "theme": "ความวิบัติจงประสบแด่ผู้ทำละหมาด",
+      "theme_en": "So woe unto those who perform prayer",
+      "theme_ms": "Maka celakalah bagi orang-orang yang mendirikan solat"
     }],
     "content_detail": "“อัลมาอูน” หมายถึง สิ่งของเครื่องใช้เล็ก ๆ น้อย ๆ หรือ การช่วยเหลือเกื้อกูล นำมาจากอายะฮ์สุดท้าย สูเราะฮ์นี้ชี้ให้เห็นว่าสัญลักษณ์ของผู้ปฏิเสธและผู้กลับกลอก (มุนาฟิก) คือการขาดจริยธรรมต่อเพื่อนมนุษย์ควบคู่ไปกับการทำลายสติปัญญาในการภักดีต่อพระเจ้า",
     "name_en": "Al-Maun",
