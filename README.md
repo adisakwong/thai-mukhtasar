@@ -1,6 +1,6 @@
-# อัลกุรอาน มุคตะศ็อร - พร้อมคำแปลภาษาไทยและอังกฤษ
+# ตะดับบุรอัลกุรอาน-มุคตะศ็อร - พร้อมคำแปลภาษาไทย-อังกฤษ
 
-เว็บแอปพลิเคชันสำหรับอ่านอัลกุรอาน พร้อมคำแปลมุคตะศ็อร (ภาษาไทย) และ Mukhtasar (ภาษาอังกฤษ) ใช้งานผ่านเบราว์เซอร์ ไม่ต้องติดตั้ง
+เว็บแอปพลิเคชันสำหรับตะดับบุรอัลกุรอาน พร้อมคำแปลมุคตะศ็อร (ภาษาไทย/อังกฤษ) ใช้งานผ่านเบราว์เซอร์ ไม่ต้องติดตั้ง
 
 ## คุณสมบัติ
 
@@ -60,7 +60,7 @@ npx serve .
 
 # Al-Qur'an Mukhtasar - with Thai and English Translation
 
-A web application for reading the Quran with Mukhtasar Thai translation and English Mukhtasar translation. Runs in the browser with no installation required.
+A web application for Tadabbur the Quran with Mukhtasar Thai translation and English Mukhtasar translation. Runs in the browser with no installation required.
 
 ## Features
 
