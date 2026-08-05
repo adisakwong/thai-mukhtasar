@@ -6726,22 +6726,10 @@ window.QURAN_MAP_DATA = [
     "reveal": "Makkiyah",
     "max_ayat": 3,
     "thematic_ayat": [{
-      "ayat_range": "1",
-      "theme": "แท้จริงเราได้ประทาน 'อัลเกาษัร' (ความดีงามอันมากมายมหาศาล หรือแม่น้ำในสวรรค์) ให้แก่เจ้าแล้ว (โอ้มุฮัมมัด)",
-      "theme_en": "Indeed, We have granted you [O Muhammad] Al-Kawthar (abundant good, or a river in Paradise).",
-      "theme_ms": "Sesungguhnya Kami telah mengurniakan kepadamu (wahai Muhammad) Al-Kauthar (kebaikan yang banyak dan melimpah, atau sebuah sungai di Syurga)."
-    },
-    {
-      "ayat_range": "2",
-      "theme": "ดังนั้นเจ้าจงดำรงละหมาดเพื่อพระเจ้าของเจ้าเท่านั้น และจงเชือดสัตว์พลีทาน (กุรบาน) เพื่อพระองค์",
-      "theme_en": "So pray to your Lord and sacrifice [to Him alone]",
-      "theme_ms": "Maka kerjakanlah solat kerana Tuhanmu dan sembelihlah korban (hanya untuk-Nya)."
-    },
-    {
-      "ayat_range": "3",
-      "theme": "แท้จริงผู้ที่เกลียดชังเจ้าและประณามเจ้านั่นแหละ คือผู้ที่ตัดขาดจากความดีงามทั้งปวง (และไร้ผู้สืบสกุล)",
-      "theme_en": "Indeed, your enemy is the one who is cut off [from all good and from posterity]",
-      "theme_ms": "Sesungguhnya orang yang membenci engkau, dialah yang terputus (dari segala kebaikan dan keturunan)"
+      "ayat_range": "1-3",
+      "theme": "ความโปรดปรานของอัลลอฮ์แก่ท่านเราะสูลุลลอฮ์",
+      "theme_en": "he favor of Allah upon the Messenger of Allah.",
+      "theme_ms": "Rahmat Allah ke atas Rasulullah."
     }],
     "content_detail": "'อัลเกาษัร' หมายถึง ความดีงามอันมากมาย หรือ แม่น้ำแห่งความบรมสุขในสวรรค์ ถือเป็นสูเราะฮ์ที่สั้นที่สุดในอัลกุรอาน ประทานลงมาเพื่อปลอบขวัญท่านนบีมุฮัมมัดเมื่อครั้งที่บุตรชายของท่านเสียชีวิตและถูกพวกศัตรูเยาะเย้ยว่าสายสัมพันธ์ของท่านถูกตัดขาด",
     "name_en": "Al-Kautsar",
@@ -6757,16 +6745,10 @@ window.QURAN_MAP_DATA = [
     "reveal": "Makkiyah",
     "max_ayat": 6,
     "thematic_ayat": [{
-      "ayat_range": "1-3",
-      "theme": "จงกล่าวเถิด (โอ้มุฮัมมัด): โอ้บรรดาผู้ปฏิเสธศรัทธาเอ๋ย! ฉันจะไม่เคารพภักดีสิ่งที่พวกท่านเคารพภักดี และพวกท่านก็ไม่ใช่ผู้เคารพภักดีพระเจ้าที่ฉันเคารพภักดี",
-      "theme_en": "Say [O Muhammad], 'O you disbelievers! I do not worship what you worship, nor are you worshippers of what I worship.",
-      "theme_ms": "Katakanlah (wahai Muhammad): 'Wahai orang-orang kafir! Aku tidak akan menyembah apa yang kamu sembah, dan kamu juga bukan penyembah apa yang aku sembah"
-    },
-    {
-      "ayat_range": "4-6",
-      "theme": "และฉันก็ไม่มีวันเป็นผู้เคารพภักดีสิ่งที่พวกท่านเคยเคารพภักดี และพวกท่านก็ไม่มีวันเป็นผู้เคารพภักดีพระเจ้าที่ฉันเคารพภักดี สำหรับพวกท่านคือศาสนาของพวกท่าน และสำหรับฉันคือศาสนาของฉัน",
-      "theme_en": "And I will not be a worshipper of what you have worshipped, nor will you be worshippers of what I worship. For you is your religion, and for me is my religion",
-      "theme_ms": "Dan aku tidak akan pernah menjadi penyembah apa yang kamu sembah, dan kamu tidak akan pernah menjadi penyembah apa yang aku sembah. Bagimu agamamu, dan bagiku agamaku"
+      "ayat_range": "1-6",
+      "theme": "กฏเหล็กของความสัมพันธ์ด้านศาสนาระหว่างผู้ศรัทธาและผู้ปฏิเสธศรัทธา",
+      "theme_en": "The Iron Rules of Religious Relations Between Believers and Rejections",
+      "theme_ms": "Peraturan Besi Hubungan Agama Antara Penganut dan Penolakan"
     }],
     "content_detail": "อัลกาฟิรูน หมายถึง บรรดากลุ่มผู้ปฏิเสธศรัทธา ประทานลงมาเพื่อประกาศจุดยืนอันเด็ดขาดของอิสลามในการปฏิเสธข้อเสนอของพวกกุร็อยช์ที่ต้องการให้มีการประนีประนอมและผลัดกันกราบไหว้สิ่งศักดิ์สิทธิ์ เป็นบทแห่งการแบ่งแยกสัจธรรมกับความเท็จ",
     "name_en": "Al-Kafirun",
@@ -6782,22 +6764,10 @@ window.QURAN_MAP_DATA = [
     "reveal": "Madaniyah",
     "max_ayat": 3,
     "thematic_ayat": [{
-      "ayat_range": "1",
-      "theme": "เมื่อความช่วยเหลือของอัลลอฮ์และการพิชิต (นครมักกะฮ์) ได้มาถึงแล้ว",
-      "theme_en": "When the help of Allah and the victory (the conquest of Makkah) has come.",
-      "theme_ms": "Apabila telah datang pertolongan Allah dan kemenangan (pembukaan Kota Makkah)"
-    },
-    {
-      "ayat_range": "2",
-      "theme": "และเจ้าได้เห็นมนุษย์หลั่งไหลเข้าสู่ศาสนาของอัลลอฮ์กันเป็นกลุ่ม ๆ และเป็นขบวนใหญ่",
-      "theme_en": "And you see the people entering into the religion of Allah in multitudes and in crowds",
-      "theme_ms": "Dan engkau melihat manusia masuk ke dalam agama Allah secara beramai-ramai dan berbondong-bondong"
-    },
-    {
-      "ayat_range": "3",
-      "theme": "ดังกล่าวจงแซ่ซ้องสดุดีด้วยการสรรเสริญพระเจ้าของเจ้าเถิด และจงขออภัยโทษต่อพระองค์ แท้จริงพระองค์คือผู้ทรงตอบรับการสารภาพผิดเสมอ",
-      "theme_en": "Then glorify the praises of your Lord and seek His forgiveness. Indeed, He is ever Accepting of repentance (and ever Forgiving).",
-      "theme_ms": "Maka bertasbihlah dengan memuji Tuhanmu dan mohonlah ampun kepada-Nya. Sesungguhnya Dia adalah Maha Menerima taubat (lagi Maha Pengampun)."
+      "ayat_range": "1-3",
+      "theme": "ความช่วยเหลือจากอัลลอฮ์และการพิชิต และคำแนะนำแก่ท่านนบีมุฮัมหมัด",
+      "theme_en": "The help and victory from Allah, and the guidance of Prophet Muhammad.",
+      "theme_ms": "Pertolongan dan kemenangan daripada Allah, serta hidayah Nabi Muhammad."
     }],
     "content_detail": "อันนัศร์  หมายถึง การช่วยเหลือเกื้อกูล ถือเป็นสูเราะฮ์สุดท้ายที่ถูกประทานลงมาในลักษณะสมบูรณ์ทั้งบท เป็นสัญญาณแจ้งเหตุถึงความสำเร็จของภารกิจของท่านนบีและการอำลาโลกนี้ของท่าน โดยสั่งให้จบภารกิจด้วยการตัสบีห์และอิสติฆฟาร",
     "name_en": "An-Nashr",
@@ -6813,16 +6783,10 @@ window.QURAN_MAP_DATA = [
     "reveal": "Makkiyah",
     "max_ayat": 5,
     "thematic_ayat": [{
-      "ayat_range": "1-2",
-      "theme": "มือทั้งสองของอบูละฮับจงพินาศ และเขาก็พินาศแล้ว! ทรัพย์สินของเขาและสิ่งที่เขาได้ขวนขวายไว้ไม่ได้ช่วยขจัดปัดเป่าบทลงโทษอะไรแก่เขาเลย",
-      "theme_en": "May the hands of Abu Lahab be ruined, and ruined is he. His wealth and what he has earned will not avail him [from the punishment].",
-      "theme_ms": "Celakalah kedua tangan Abu Lahab, dan sesungguhnya celakalah dia. Hartanya dan apa yang dia usahakan tidak akan dapat menyelamatkannya (daripada azab)."
-    },
-    {
-      "ayat_range": "3-5",
-      "theme": "ไม่นานเขาจะได้เข้าสู่ไฟนรกที่ลุกโชน พร้อมทั้งภรรยาของเขา (อุมมุญะมีล) ผู้แบกฟืน (คอยแพร่ข่าวร้ายและคำนินทา) ที่คอของนางมีเชือกถักด้วยใยอินทผลัมอย่างแน่นหนา (ถูกลากลงนรก)",
-      "theme_en": "He will [soon] enter a blazing Fire, along with his wife, the carrier of firewood (who spreads malicious slander and gossip). Around her neck is a rope of palm fiber (twisted and strong), by which she will be dragged [into Hell]",
-      "theme_ms": "Dia akan memasuki api yang menyala-nyala (Neraka), begitu juga isterinya, pembawa kayu api (yang menyebarkan fitnah dan umpatan). Di lehernya ada tali daripada sabut (tali yang dipintal daripada pelepah kurma) yang kukuh (untuk menyeretnya ke Neraka)"
+      "ayat_range": "1-5",
+      "theme": "ประนามอบูละฮับและภรรยา และบั้นปลายของเขาทั้งสอง",
+      "theme_en": "Condemn Abu Lahab and his wife, and the end of their lives.",
+      "theme_ms": "Mengutuk Abu Lahab dan isterinya, serta pengakhiran hidup mereka."
     }],
     "content_detail": "อัลมะสัด หมายถึง ใยไม้ หรือ เชือกถักจากใยอินทผลัม มีอีกชื่อหนึ่งว่า 'สูเราะฮ์ อัลละฮับ' เป็นสูเราะฮ์ที่คาดโทษและประณามศัตรูตัวฉกาจของอิสลามคืออบูละฮับและภรรยาอย่างเปิดเผยเนื่องจากความดื้อรั้นและการทำลายล้างท่านนบี",
     "name_en": "Al-Masad",
@@ -6838,28 +6802,10 @@ window.QURAN_MAP_DATA = [
     "reveal": "Makkiyah",
     "max_ayat": 4,
     "thematic_ayat": [{
-      "ayat_range": "1",
-      "theme": "จงกล่าวเถิด (โอ้มุฮัมมัด): พระองค์คืออัลลอฮ์ผู้ทรงเอกะ (หนึ่งเดียวเท่านั้น)",
-      "theme_en": "Say [O Muhammad]: 'He is Allah, the One (the Unique and Absolute).'",
-      "theme_ms": "Katakanlah (wahai Muhammad): 'Dialah Allah, Yang Maha Esa (Yang Tunggal dan Mutlak).'"
-    },
-    {
-      "ayat_range": "2",
-      "theme": "อัลลอฮ์ทรงเป็นที่พึ่งพิงอันสูงสุด (ที่ทุกสรรพสิ่งต้องมุ่งหวังและพึ่งพิงพระองค์)",
-      "theme_en": "Allah is the Eternal, the Self-Sufficient (upon Whom all creatures depend, and Who depends upon none).",
-      "theme_ms": "Allah adalah tempat bergantung segala sesuatu (Yang Maha Kaya dan tidak memerlukan apa pun, manakala semua makhluk bergantung kepada-Nya)."
-    },
-    {
-      "ayat_range": "3",
-      "theme": "พระองค์ไม่ทรงประสูติ (ไม่มีบุตร) และไม่ทรงถูกประสูติ (ไม่มีบิดามารดา)",
-      "theme_en": "He neither begets nor is He begotten.",
-      "theme_ms": "Dia tidak beranak dan tidak diperanakkan."
-    },
-    {
-      "ayat_range": "4",
-      "theme": "และไม่มีผู้ใดหรือสิ่งใดเสมอเหมือนหรือเท่าเทียมพระองค์เลย",
-      "theme_en": "And there is none comparable or equal to Him.",
-      "theme_ms": "Dan tidak ada sesuatu pun yang setara atau sebanding dengan-Nya."
+      "ayat_range": "1-4",
+      "theme": "เอกานุภาพของอัลลอฮ์(เตาฮีด)",
+      "theme_en": "The Oneness of Allah (Tawhid)",
+      "theme_ms": "Keesaan Allah (Tauhid)"
     }],
     "content_detail": "อัลอิคล็อศ หมายถึง การทำความบริสุทธิ์ใจ หรือ บทยืนยันความบริสุทธิ์ของเตาฮีด เป็นสูเราะฮ์ที่รวบรวมแก่นแท้ของความศรัทธาในเรื่องคุณลักษณะของอัลลอฮ์อย่างสมบูรณ์ที่สุด จนท่านนบีระบุว่ามีคุณค่าเทียบเท่ากับ 1 ใน 3 ของอัลกุรอาน",
     "name_en": "Al-Ikhlas",
@@ -6875,16 +6821,10 @@ window.QURAN_MAP_DATA = [
     "reveal": "Makkiyah",
     "max_ayat": 5,
     "thematic_ayat": [{
-      "ayat_range": "1-2",
-      "theme": "จงกล่าวเถิด: ฉันขอความคุ้มครองต่อพระเจ้าแห่งรุ่งอรุณ ให้พ้นจากความชั่วร้ายของสิ่งที่พระองค์ทรงสร้างขึ้น",
-      "theme_en": "Say: 'I seek refuge with the Lord of the dawn (daybreak) from the evil of what He has created.",
-      "theme_ms": "Katakanlah: 'Aku berlindung kepada Tuhan yang menguasai waktu subuh (fajar) daripada kejahatan makhluk yang Dia ciptakan."
-    },
-    {
-      "ayat_range": "3-5",
-      "theme": "และจากความชั่วร้ายของความมืดแห่งค่ำคืนเมื่อมันย่างกรายเข้ามา, จากความชั่วร้ายของบรรดาผู้ที่เป่าคาถาลงบนปมเชือก (พวกเล่นคุณไสย) และจากความชั่วร้ายของอิจฉาผู้ริษยาเมื่อเขาอิจฉาริษยา",
-      "theme_en": "And from the evil of the darkness when it settles (or spreads), and from the evil of those who blow on knots (practitioners of witchcraft and sorcery), and from the evil of the envier when he envies.",
-      "theme_ms": "Dan daripada kejahatan gelap malam apabila ia menyelinap masuk, daripada kejahatan orang-orang yang meniup pada simpulan-simpulan tali (ahli sihir dan tukang tenung), dan daripada kejahatan orang yang hasad dengki apabila dia dengki."
+      "ayat_range": "1-5",
+      "theme": "ขออัลลอฮ์ทรงคุ้มครองจากความชั่วร้ายของสิ่งถูกสร้างทั้งหมาย",
+      "theme_en": "May Allah protect us from the evil of all His creation.",
+      "theme_ms": "Semoga Allah melindungi kita daripada kejahatan semua ciptaan-Nya."
     }],
     "content_detail": "อัลฟะลัก  หมายถึง รุ่งอรุณ เป็นหนึ่งในสองสูเราะฮ์แห่งการขอความคุ้มครอง (อัลมุเอาวิซะตัยน์) คู่กับสูเราะฮ์อันนัส ใช้สำหรับสวดอ่านเพื่อปกป้องตนเองจากภัยเร้นลับภายนอก เช่น ไสยศาสตร์ คุณไสย ความมืด และความอิจฉาริษยาของมนุษย์",
     "name_en": "Al-Falak",
@@ -6900,16 +6840,10 @@ window.QURAN_MAP_DATA = [
     "reveal": "Makkiyah",
     "max_ayat": 6,
     "thematic_ayat": [{
-      "ayat_range": "1-3",
-      "theme": "จงกล่าวเถิด: ฉันขอความคุ้มครองต่อพระเจ้าแห่งมนุษยชาติ, พระราชาแห่งมนุษยชาติ, พระผู้เป็นเจ้าแห่งมนุษยชาติ",
-      "theme_en": "Say: I seek refuge with the Lord of mankind, the Sovereign of mankind, the God of mankind",
-      "theme_ms": "Katakanlah: Aku berlindung kepada Tuhan yang memelihara dan mentadbir manusia, Raja yang menguasai manusia, Tuhan yang disembah oleh manusia"
-    },
-    {
-      "ayat_range": "4-6",
-      "theme": "ให้พ้นจากความชั่วร้ายของผู้กระซิบกระซาบที่คอยหลบซ่อน (ชัยฏอน) ซึ่งมันคอยกระซิบกระซาบสิ่งชั่วร้ายเข้าไปในทรวงอกของมนุษย์ ทั้งที่เป็นญินและมนุษย์ด้วยกันเอง",
-      "theme_en": "from the evil of the whisperer who withdraws (and hides) — the one who whispers evil into the hearts of mankind — from among the jinn and from among mankind.",
-      "theme_ms": "daripada kejahatan bisikan (waswas) syaitan yang sentiasa bersembunyi (dan menarik diri), iaitu yang membisikkan kejahatan ke dalam dada manusia — daripada kalangan jin dan daripada kalangan manusia."
+      "ayat_range": "1-6",
+      "theme": "ขออัลลอฮ์ทรงคุ้มครองจากพวกซัยฏอนมารร้ายทั้งญินและมนุษย์",
+      "theme_en": "May Allah protect us from the evil devils, both jinn and humans.",
+      "theme_ms": "Semoga Allah melindungi kita daripada gangguan syaitan, baik jin mahupun manusia."
     }],
     "content_detail": "อันนัส  หมายถึง มนุษยชาติ เป็นสูเราะฮ์สุดท้ายที่เป็นบทปิดของคัมภีร์อัลกุรอานทั้งหมด มุ่งเน้นการขอความคุ้มครองจากภัยเงียบภายในจิตใจ คือการกระซิบกระซาบของชัยฏอนมารร้ายที่คอยล่อลวงมนุษย์ให้หลงผิด ทั้งจากตระกูลญินและมนุษย์ด้วยกัน",
     "name_en": "An-Nas",
