@@ -199,6 +199,23 @@ header .surah-nav-card {
   margin-top: 2px;
 }
 
+.surah-sub-meta a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 600;
+}
+
+.surah-sub-meta a:hover {
+  color: var(--gold);
+}
+
 /* Action Buttons */
 .btn-nav, .btn-sel, .btn-action {
   background: var(--surface2);
