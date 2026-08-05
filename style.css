@@ -635,7 +635,7 @@ header .surah-nav-card {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  color: #111827;
+  color: #0f172a;
   max-height: calc(88vh - 154px);
   background: linear-gradient(180deg, #F8E3A1 0%, #E8BF36 65%, #D09B18 100%);
   border: 1px solid rgba(0, 0, 0, 0.08);
