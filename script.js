@@ -259,9 +259,7 @@
   function openSurahModal() {
     $('#surahModal').classList.add('active');
     document.body.style.overflow = 'hidden';
-    $('#surahSearch').value = '';
     renderSurahGrid('');
-    setTimeout(function() { $('#surahSearch').focus(); }, 100);
   }
 
   function closeSurahModal() {
@@ -723,10 +721,6 @@
     bind('#closeModal', 'click', closeSurahModal);
     bind('#surahModal', 'click', function(e) {
       if(e.target === this) closeSurahModal();
-    });
-
-    bind('#surahSearch', 'input', function() {
-      renderSurahGrid(this.value);
     });
 
     bind('#toggleArabic', 'change', function() {

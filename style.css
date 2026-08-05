@@ -637,9 +637,10 @@ header .surah-nav-card {
   gap: 18px;
   color: #111827;
   max-height: calc(88vh - 154px);
-  background: #edf2f7;
+  background: linear-gradient(180deg, #F8E3A1 0%, #E8BF36 65%, #D09B18 100%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 24px;
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
 }
 
 .maqasid-summary {
