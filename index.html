@@ -56,7 +56,7 @@
 <div class="modal-overlay" id="surahModal">
   <div class="modal-panel">
     <div class="modal-header">
-      <h2>เลือกซูเราะห์ (Select Surah)</h2>
+      <h2>เลือกซูเราะห์</h2>
       <button class="modal-close" id="closeModal">&times;</button>
     </div>
     <div class="surah-grid" id="surahGrid"></div>
@@ -90,13 +90,13 @@
         <input type="number" id="settingsAyahInput" min="1" placeholder="อายะฮ์ (ไม่บังคับ)" style="width:140px;padding:6px" />
       </div>
       <hr />
-        <label>การแสดงผลภาษา (Display languages)</label>
+        <label>การแสดงผลภาษา</label>
         <div style="display:flex; gap:12px; align-items:center;">
           <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="toggleArabic"> อาหรับ</label>
           <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="toggleThai"> ไทย</label>
           <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="toggleEnglish"> English</label>
         </div>
-      <label>ฟอนต์และขนาด (Arabic font & size & Thai size)</label>
+      <label>ฟอนต์อาหรับและขนาด & ขนาดฟอนต์ไทย</label>
       <div style="display:flex; gap:8px; align-items:center;">
         <select id="settingsArabicFontSelect" style="padding:6px">
           <option value="">(ระบบ)</option>
@@ -109,8 +109,8 @@
       </div>
       <div style="display:flex; gap:8px;">
         <button class="btn-action" id="btnSaveSettings" style="padding:8px 12px">บันทึก</button>
-        <button class="btn-action" id="btnSaveCurrentAsDefault" style="padding:8px 12px">ตั้งค่าสถานะเป็นตำแหน่งปัจจุบัน</button>
-        <button class="btn-action" id="btnClearDefault" style="padding:8px 12px">ล้างค่าเริ่มต้น</button>
+        <button class="btn-action" id="btnSaveCurrentAsDefault" style="padding:8px 12px">ตั้งค่าเป็นตำแหน่งปัจจุบัน</button>
+        <button class="btn-action" id="btnClearDefault" style="padding:8px 12px">ล้างค่า</button>
       </div>
     </div>
   </div>
@@ -123,7 +123,7 @@
 <div class="modal-overlay theme-popup-overlay" id="themePopup">
   <div class="modal-panel theme-popup-panel">
     <div class="modal-header">
-      <h2>รายละเอียด Theme</h2>
+      <h2>ประเด็น-Maqasid</h2>
       <button class="modal-close" id="closeThemePopup">&times;</button>
     </div>
     <div class="theme-popup-content" id="themePopupContent"></div>
@@ -145,25 +145,20 @@
             <p>by Tech for Ummah v.1.1</p>
           
         </CENTER>
-        <p><b><font color="#E8BF36" size=4>คำอธิบาย :</font></b></p>
+        <!-- <p><b><font color="#E8BF36" size=4>คำอธิบาย :</font></b></p> -->
         <p>
         ตัฟซีรมุคตะศ็อร المختصر في تفسير القرآن الكريم (Al-Mukhtasar fi Tafsir al-Quran al-Karim) 
         เป็นหนังสืออรรถาธิบายอัลกุรอานแบบย่อ(มิใช่แปลอัลกุรอาน) จัดทำโดยกลุ่มนักวิชาการผู้ทรงคุณวุฒิจาก [ศูนย์อัฟซีร์เพื่อการศึกษาอัลกุรอาน] 
         (https://tafsir.net) เหมาะสำหรับผู้ที่ต้องการเข้าใจความหมายของโองการต่างๆ อย่างรวดเร็ว ชัดเจน และไม่ซับซ้อน 
-        <br><b> จุดเด่นของหนังสือ :</b>
-        <br>-ภาษาเข้าใจง่าย: ใช้คำอธิบายที่กระชับ หลีกเลี่ยงศัพท์ยากหรือน้ำท่วมทุ่ง
-        <br>-เน้นความหมายหลัก: อธิบายความหมายของโองการและคำศัพท์แปลกในอัลกุรอานโดยตรง
-        <br>-ไม่เน้นเรื่องปลีกย่อย: ไม่ลงลึกเรื่องหลักไวยากรณ์หรือความขัดแย้งทางฟิกฮ์ (นิติศาสตร์อิสลาม)
-        <br>-แนวทางถูกต้อง: ยึดตามแนวทางชาวสลัก (บรรพชนยุคแรก) และหลักฐานจากซุนนะฮ์
         </p>
         
 
-  <p><b><font color="#E8BF36" size=4>วิธีการตะดับบุรด้วยตนเอง :</font></b>
-  <br>1.เลือกซูเราะห์ที่ต้องการ และอ่านบทนำของซูเราะห์ Intro-Summary เพื่อเข้าใจภาพรวม จาก <a href="https://adisakwong.github.io/intro-sura"> intro-sura </a> 
-  <br>2.อ่านอายัตด้วยน้ำเสียงที่ถูกต้องตามหลักตัจวีต (สามารถปรับรูปแบบหรือขนาดของ Font และมุสหัฟ ได้ตามต้องการตามความถนัดของตนเอง) 
-  <br>3.ศึกษาเป้าประสงค์ของอายัตหรือกลุ่มอายัต ว่าเนื้อหาสื่อสารในประเด็นใด (ใช้ Maqasid Al-Quran และจากหนังสือแผนที่อัลกุรอาน) 
-  <br>4.อ่านและศึกษาความหมายจากตัฟซีรเพื่อเข้าใจเนื้อหาหรือสาระจากอัลกุรอาน (ใช้ตัฟซีรมุคตะศ็อร ฉบับภาษาไทย)
-  <br>5.จดบันทึกด้วยการคลิกปุ่มคัดลอกเนื้อหาตัฟซีรของอายัตที่ต้องการ เพื่อนำไปประยุกต์ใช้ในชีวิตประจำวันของตนเองในทันที
+  <p><b><font color="#E8BF36" size=4>วิธีตะดับบุรด้วยตนเอง :</font></b>
+  <br>1.เลือกซูเราะห์ที่ต้องการ และอ่านบทนำของซูเราะห์(Intro-Summary) เพื่อเข้าใจภาพรวม (คลิกบนชื่อซูเราะห์เพื่อเปิดแอป intro-sura) 
+  <br>2.อ่านอายัตด้วยน้ำเสียงที่ถูกต้องตามหลักตัจวีต (คลิกปุ่มตั้งค่า ปรับรูปแบบมุสหัฟ ฟอนต์และขนาดได้ตามต้องการ) 
+  <br>3.ศึกษาเป้าประสงค์ของอายัตหรือกลุ่มอายัต ว่าเนื้อหาสื่อสารในประเด็นใด (จากข้อความบนแถบอายัต หรือคลิกปุ่ม Maqasid) 
+  <br>4.อ่านและศึกษาความหมายจากตัฟซีรเพื่อเข้าใจเนื้อหาหรือสารจากอัลกุรอาน (ดูตัฟซีรมุคตะศ็อร-ฉบับภาษาไทย)
+  <br>5.เทียบเคียงเนื้อหาที่อ่านกับตัวเอง และนำไปปฏิบัติตามคำสั่งใช้จากอัลกุรอานในชีวิตประจำวันทันที (สามารถคัดลอกเพื่อจัดเก็บตัฟซีรเฉพาะอายัตที่ต้องการได้)
   </p>
   <br>
   <p><b><font color="#E8BF36" size=4>วิธีใช้งานเว็บแอป :</font></b></p>

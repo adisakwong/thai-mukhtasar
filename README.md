@@ -1,4 +1,4 @@
-# ตะดับบุรอัลกุรอาน-มุคตะศ็อร - พร้อมคำแปลภาษาไทย-อังกฤษ
+# ตะดับบุร-มุคตะศ็อร - พร้อมคำแปลภาษาไทย-อังกฤษ
 
 เว็บแอปพลิเคชันสำหรับตะดับบุรอัลกุรอาน พร้อมคำแปลมุคตะศ็อร (ภาษาไทย/อังกฤษ) ใช้งานผ่านเบราว์เซอร์ ไม่ต้องติดตั้ง
 
@@ -58,7 +58,7 @@ npx serve .
 
 ---
 
-# Al-Qur'an Mukhtasar - with Thai and English Translation
+# Tadabbur Mukhtasar - with Thai and English Translation
 
 A web application for Tadabbur the Quran with Mukhtasar Thai translation and English Mukhtasar translation. Runs in the browser with no installation required.
 
