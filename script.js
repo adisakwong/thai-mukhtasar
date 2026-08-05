@@ -93,6 +93,118 @@
     return item.text || '';
   }
 
+  function openThemePopup(surah, ayah, themesText) {
+    var overlay = $('#themePopup');
+    var content = $('#themePopupContent');
+    if(!overlay || !content) return;
+    var surahName = SURAH_TH[Number(surah)] || 'ซูเราะห์ ' + surah;
+    var title = 'ซูเราะห์ ' + surah + ' - อายะฮ์ ' + ayah;
+    var parts = (themesText || '').split('||').filter(function(x) { return x && x.trim(); });
+    if(!parts.length) {
+      content.innerHTML = '<div class="theme-popup-item"><strong>' + title + '</strong>ไม่มีข้อมูลธีมเพิ่มเติม</div>';
+    } else {
+      content.innerHTML = '<div class="theme-popup-item"><strong>' + title + '</strong>' +
+        '<div>' + parts.map(function(t) { return '<div>' + t + '</div>'; }).join('') + '</div></div>';
+    }
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeThemePopup() {
+    var overlay = $('#themePopup');
+    if(!overlay) return;
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function getMaqasidSurahData(surahId) {
+    if(typeof surahId === 'number') {
+      surahId = String(surahId);
+    }
+    if(!surahId) return null;
+    if(window.QURAN_MAP_BY_SURAH && window.QURAN_MAP_BY_SURAH[String(surahId)]) {
+      return window.QURAN_MAP_BY_SURAH[String(surahId)];
+    }
+    if(Array.isArray(window.QURAN_MAP_DATA)) {
+      for(var i = 0; i < window.QURAN_MAP_DATA.length; i++) {
+        if(String(window.QURAN_MAP_DATA[i].surah_id) === String(surahId)) {
+          return window.QURAN_MAP_DATA[i];
+        }
+      }
+    }
+    return null;
+  }
+
+  function renderMaqasidSelect() {
+    var select = $('#maqasidSurahSelect');
+    if(!select) return;
+    select.innerHTML = '<option value="">เลือกซูเราะห์</option>';
+    for(var i = 0; i < SURAH.length; i++) {
+      var surah = SURAH[i];
+      var num = surah.id || (i + 1);
+      var thaiName = SURAH_TH[num] || surah.ns || '';
+      var label = num + '. ' + thaiName + ' (' + (surah.ns || '') + ')';
+      var option = document.createElement('option');
+      option.value = num;
+      option.textContent = label;
+      select.appendChild(option);
+    }
+  }
+
+  function renderMaqasidModal(surahId) {
+    var select = $('#maqasidSurahSelect');
+    if(!select) return;
+    if(!surahId) {
+      surahId = currentSurah;
+    }
+    select.value = String(surahId);
+    var data = getMaqasidSurahData(surahId);
+    var content = $('#maqasidPopupContent');
+    if(!content) return;
+    if(!data) {
+      content.innerHTML = '<div class="no-results">ไม่พบข้อมูล Maqasid สำหรับซูเราะห์นี้</div>';
+      return;
+    }
+
+    var surahName = SURAH_TH[Number(surahId)] || data.name || 'ซูเราะห์ ' + surahId;
+    var reveal = data.reveal || '';
+    var summaryHtml = '<div class="maqasid-summary">' +
+      '<div class="maqasid-title">' + surahName + '</div>' +
+      '<div class="maqasid-meta">' + 'ซูเราะห์ ' + surahId + ' • ' + reveal + ' • ' + (data.max_ayat || '?') + ' อายะฮ์</div>' +
+      '</div>';
+
+    var itemsHtml = '';
+    if(Array.isArray(data.thematic_ayat) && data.thematic_ayat.length) {
+      for(var i = 0; i < data.thematic_ayat.length; i++) {
+        var item = data.thematic_ayat[i];
+        itemsHtml += '<div class="maqasid-item">' +
+                     '<div class="maqasid-label">' + (item.theme || '') + '</div>' +
+                     '<div class="maqasid-range">ช่วงอายะฮ์: ' + (item.ayat_range || '-') + '</div>' +
+                     '</div>';
+      }
+    } else {
+      itemsHtml = '<div class="no-results">ไม่มีข้อมูล theme สำหรับซูเราะห์นี้</div>';
+    }
+
+    content.innerHTML = summaryHtml + itemsHtml;
+  }
+
+  function openMaqasidModal() {
+    var overlay = $('#maqasidModal');
+    if(!overlay) return;
+    renderMaqasidSelect();
+    renderMaqasidModal(currentSurah);
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMaqasidModal() {
+    var overlay = $('#maqasidModal');
+    if(!overlay) return;
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
   function renderSurahGrid(filter) {
     var grid = $('#surahGrid');
     grid.innerHTML = '';
@@ -188,7 +300,7 @@
         btnPlaySurah.innerHTML = '⏹ หยุดเล่น';
         btnPlaySurah.classList.add('btn-gold');
       } else {
-        btnPlaySurah.innerHTML = '▶ ฟังซูเราะห์';
+        btnPlaySurah.innerHTML = '▶ เสียง';
         btnPlaySurah.classList.remove('btn-gold');
       }
     }
@@ -569,6 +681,12 @@
             }
             var pill = el('div', 'ayah-theme');
             pill.textContent = themes.join(', ');
+            pill.setAttribute('data-surah', currentSurah);
+            pill.setAttribute('data-ayah', v);
+            pill.setAttribute('data-themes', themes.join('||'));
+            pill.addEventListener('click', function() {
+              openThemePopup(this.getAttribute('data-surah'), this.getAttribute('data-ayah'), this.getAttribute('data-themes'));
+            });
             headerCenter.appendChild(pill);
           }
         }
@@ -677,6 +795,37 @@
       document.body.style.overflow = 'hidden';
     });
 
+    bind('#btnOpenMaqasid', 'click', function() {
+      openMaqasidModal();
+    });
+
+    bind('#btnOpenHelp', 'click', function() {
+      $('#helpModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    bind('#closeHelpModal', 'click', function() {
+      $('#helpModal').classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    bind('#helpModal', 'click', function(e) {
+      if(e.target === this) {
+        $('#helpModal').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    var maqasidSelect = $('#maqasidSurahSelect');
+    if(maqasidSelect) {
+      maqasidSelect.addEventListener('change', function() {
+        var selected = parseInt(this.value, 10);
+        if(selected && selected >= 1 && selected <= 114) {
+          renderMaqasidModal(selected);
+        }
+      });
+    }
+
     var btnOpenSettings = $('#btnOpenSettings');
     if(btnOpenSettings) {
       btnOpenSettings.addEventListener('click', function() {
@@ -701,6 +850,26 @@
       document.body.style.overflow = '';
     });
 
+    bind('#closeThemePopup', 'click', function() {
+      closeThemePopup();
+    });
+
+    bind('#themePopup', 'click', function(e) {
+      if(e.target === this) {
+        closeThemePopup();
+      }
+    });
+
+    bind('#closeMaqasidModal', 'click', function() {
+      closeMaqasidModal();
+    });
+
+    bind('#maqasidModal', 'click', function(e) {
+      if(e.target === this) {
+        closeMaqasidModal();
+      }
+    });
+
     bind('#bookmarksModal', 'click', function(e) {
       if(e.target === this) {
         $('#bookmarksModal').classList.remove('active');
@@ -712,6 +881,8 @@
       if(e.key === 'Escape') {
         closeSurahModal();
         $('#bookmarksModal').classList.remove('active');
+        closeThemePopup();
+        closeMaqasidModal();
         document.body.style.overflow = '';
       }
       if(e.target.tagName !== 'INPUT') {

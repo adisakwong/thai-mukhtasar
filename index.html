@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>อัลกุรอาน-ตัฟซีรมุคตะศ็อร </title>
-<meta name="description" content="คัมภีร์อัลกุรอาน พร้อมตัฟซีรภาษาไทย มุคตะศ็อร (Mukhtasar) และคำแปลภาษาอังกฤษ พร้อมเสียงอ่านบทกุรอาน">
+<title>ตะดับบุรด้วยตัฟซีรมุคตะศ็อร </title>
+<link rel="manifest" href="manifest.json">
+<meta name="description" content="คัมภีร์อัลกุรอาน พร้อมตัฟซีรภาษาไทย มุคตะศ็อร (Mukhtasar)และเสียงอ่านบทกุรอาน">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +15,7 @@
 
 <div id="app">
   <header>
-    <h1>อัลกุรอาน-ตัฟซีรมุคตะศ็อร</h1>
+    <h1>ตะดับบุร-ตัฟซีรมุคตะศ็อร</h1>
   <!-- <p>
   <span class="badge">by Tech for Ummah v.1.1</span>
   </p> -->
@@ -36,9 +37,11 @@
     <button class="btn-action btn-hamburger" id="btnToggleNav" title="เมนู">☰</button>
     <div class="nav-actions">
       <button class="btn-action" id="btnToggleMode" title="เปลี่ยนรูปแบบการอ่าน">🎴 การ์ด</button>
-      <button class="btn-action" id="btnPlaySurah" title="ฟังเสียงอ่านทั้งซูเราะห์">▶ ฟังซูเราะห์</button>
+      <button class="btn-action" id="btnPlaySurah" title="ฟังเสียงอ่านทั้งซูเราะห์">▶ เสียง</button>
+      <button class="btn-action" id="btnOpenMaqasid" title="Maqasid">🎯 Maqasid</button>
       <button class="btn-action" id="btnOpenBookmarks" title="รายการโปรด">⭐</button>
-      <button class="btn-action btn-settings" id="btnOpenSettings" title="ตั้งค่า">⚙️ ตั้งค่า</button>
+      <button class="btn-action" id="btnOpenHelp" title="ความช่วยเหลือ">❓</button>
+    <button class="btn-action btn-settings" id="btnOpenSettings" title="ตั้งค่า">⚙️ ตั้งค่า</button>
     </div>
   </div>
 </header>
@@ -100,7 +103,7 @@
           <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="toggleThai"> ไทย</label>
           <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="toggleEnglish"> English</label>
         </div>
-      <label>ฟอนต์และขนาด (Arabic font & sizes)</label>
+      <label>ฟอนต์และขนาด (Arabic font & size & Thai size)</label>
       <div style="display:flex; gap:8px; align-items:center;">
         <select id="settingsArabicFontSelect" style="padding:6px">
           <option value="">(ระบบ)</option>
@@ -122,6 +125,77 @@
 
 <!-- Toast Notification -->
 <div id="toast"></div>
+
+<!-- Theme detail popup -->
+<div class="modal-overlay theme-popup-overlay" id="themePopup">
+  <div class="modal-panel theme-popup-panel">
+    <div class="modal-header">
+      <h2>รายละเอียด Theme</h2>
+      <button class="modal-close" id="closeThemePopup">&times;</button>
+    </div>
+    <div class="theme-popup-content" id="themePopupContent"></div>
+  </div>
+</div>
+
+<!-- Help popup -->
+<div class="modal-overlay" id="helpModal">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h2>Help</h2>
+      <button class="modal-close" id="closeHelpModal">&times;</button>
+    </div>
+    <div class="modal-search help-content help-scroll">
+      <div style="display:flex; flex-direction:column; gap:12px; color:var(--text2); line-height:1.8;">
+        
+          <h2>ตะดับบุร-ตัฟซีรมุคตะศ็อร</h2>
+          <p>by Tech for Ummah v.1.1</p>
+        
+        
+        <p><b>วิธีใช้งานเว็บแอป :</b></p>
+        <ul style="padding-left:18px; margin:0;">
+          <li>คลิกปุ่ม <strong>เลือกซูเราะห์</strong> เพื่อเลือกบทที่ต้องการอ่านและตะดับบุร</li>
+          <li>ปุ่ม <strong>🎴 การ์ด</strong> / <strong>📖 มุศฮัฟ</strong> สำหรับสลับการแสดงผลระหว่างการ์ดอายะและหน้ามุศฮัฟ</li>
+          <li>ปุ่ม <strong>▶ เสียง</strong> เพื่อเล่นเสียงทั้งซูเราะห์</li>
+          <li>ปุ่ม <strong>🎯 Maqasid</strong> เพื่อดูภาพรวมธีมและเนื้อหาของซูเราะห์</li>
+          <li>ปุ่ม <strong>⭐</strong> ในแต่ละอายะ เพื่อบันทึกหรือลบรายการโปรด</li>
+          <li>ปุ่ม <strong>⚙️ ตั้งค่า</strong> เพื่อปรับภาษา ขนาดตัวอักษร และค่าตำแหน่งเริ่มต้น</li>
+          <li>ปุ่ม <strong>❓ Help</strong> จะเปิดหน้าช่วยเหลือนี้</li>
+        </ul>
+
+  <p><b>วิธีการตะดับบุรด้วยตนเอง :</b>
+  <br>1.เลือกซูเราะห์ที่ต้องการ และอ่านบทนำของซูเราะห์ Intro-Summary เพื่อเข้าใจภาพรวม จาก <a href="https://adisakwong.github.io/intro-sura"> intro-sura </a> 
+  <br>2.อ่านอายัตด้วยน้ำเสียงที่ถูกต้องตามหลักตัจวีต (สามารถปรับรูปแบบหรือขนาดของ Font และมุสหัฟ ได้ตามต้องการตามความถนัดของตนเอง) 
+  <br>3.ศึกษาเป้าประสงค์ของอายัตหรือกลุ่มอายัต ว่าเนื้อหาสื่อสารในประเด็นใด (ใช้ Maqasid Al-Quran และจากหนังสือแผนที่อัลกุรอาน) 
+  <br>4.อ่านและศึกษาความหมายจากตัฟซีรเพื่อเข้าใจเนื้อหาหรือสาระจากอัลกุรอาน (ใช้ตัฟซีรมุคตะศ็อร ฉบับภาษาไทย)
+  <br>5.จดบันทึกด้วยการคลิกปุ่มคัดลอกเนื้อหาตัฟซีรของอายัตที่ต้องการ เพื่อนำไปประยุกต์ใช้ในชีวิตประจำวันของตนเองในทันที
+  </p>
+  <br>
+<p><b>อ้างอิง :</b></p>
+<p>
+  https://quran.islamunlocked.com/quran/tafsir/mokhtasar
+ <br> https://qul.tarteel.ai/resources
+</p>
+
+        <p>หมายเหตุ: หากต้องการปิด popup ให้คลิกที่ปุ่มปิดหรือพื้นที่มืดรอบ ๆ หน้าต่าง</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Maqasid overview popup -->
+<div class="modal-overlay" id="maqasidModal">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h2>Maqasid</h2>
+      <button class="modal-close" id="closeMaqasidModal">&times;</button>
+    </div>
+    <div class="modal-search">
+      <label for="maqasidSurahSelect" style="display:block; margin-bottom:8px; color:var(--text2);">เลือกซูเราะห์</label>
+      <select id="maqasidSurahSelect" style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px;"></select>
+    </div>
+    <div class="maqasid-popup-content" id="maqasidPopupContent"></div>
+  </div>
+</div>
 
 <!-- Data Scripts -->
 <script src="thai-mukhtasar.js"></script>

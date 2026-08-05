@@ -576,6 +576,152 @@ header .surah-nav-card {
 
 .theme-block:hover { transform: translateY(-2px); border-color: var(--gold-dim); }
 
+.theme-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  background: rgba(0, 0, 0, 0.65);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.theme-popup-overlay.active {
+  display: flex;
+}
+
+.theme-popup-panel {
+  width: min(560px, 100%);
+  max-height: min(85vh, 560px);
+  background: rgba(11, 19, 36, 0.98);
+  border: 1px solid rgba(229, 194, 120, 0.16);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-popup-content {
+  padding: 18px 18px 22px;
+  overflow-y: auto;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.theme-popup-item {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  background: rgba(229, 194, 120, 0.06);
+  border: 1px solid rgba(229, 194, 120, 0.12);
+  border-radius: 14px;
+}
+
+.theme-popup-item:last-child {
+  margin-bottom: 0;
+}
+
+.theme-popup-item strong {
+  display: block;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.maqasid-popup-content {
+  padding: 22px 24px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: #111827;
+  max-height: calc(88vh - 154px);
+  background: #edf2f7;
+  border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+}
+
+.maqasid-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 18px;
+  border-radius: 20px;
+  background: transparent;
+  border: none;
+}
+
+.maqasid-summary .maqasid-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.maqasid-summary .maqasid-meta {
+  font-size: 14px;
+  color: #475569;
+}
+
+.maqasid-item {
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: #1f2937;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.maqasid-item .maqasid-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 8px;
+}
+
+.maqasid-item .maqasid-range {
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+.maqasid-item + .maqasid-item {
+  margin-top: 10px;
+}
+
+.maqasid-popup-content .no-results {
+  color: var(--text2);
+  font-size: 14px;
+  padding: 14px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+}
+
+.ayah-theme {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--gold-dim);
+  font-weight: 700;
+  margin-top: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(229,194,120,0.12) 0%, rgba(229,194,120,0.06) 100%);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.16);
+  border: 1px solid rgba(229,194,120,0.08);
+  cursor: pointer;
+}
+
+.ayah-theme:hover {
+  background: rgba(229,194,120,0.18);
+}
+
+.ayah-theme::before {
+  content: '🎯 ';
+  margin-right: 6px;
+  opacity: 0.95;
+}
+
+.theme-popup-close {
+  cursor: pointer;
+}
+
 .lang-label {
   font-size: 11px;
   color: var(--gold-dim);
@@ -664,6 +810,28 @@ header .surah-nav-card {
 }
 
 .modal-overlay.active { display: flex; }
+
+.help-content {
+  color: var(--text2);
+  font-size: 15px;
+}
+
+.help-content ul {
+  padding-left: 18px;
+  margin: 0;
+  list-style: disc;
+}
+
+.help-content li {
+  margin-bottom: 10px;
+}
+
+.help-scroll {
+  padding-bottom: 18px;
+  overflow-y: auto;
+  flex: 1;
+  max-height: calc(88vh - 120px);
+}
 
 .modal-panel {
   background: var(--bg2);
