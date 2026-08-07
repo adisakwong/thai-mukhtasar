@@ -1059,14 +1059,25 @@ header .surah-nav-card {
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* Media Queries */
-@media (max-width: 640px) {
-  #app { padding: 10px; padding-top: 250px; }
-  header h1 { font-size: 24px; }
-  .surah-nav-card { padding: 12px; flex-wrap: wrap; top: 108px; }
-  .surah-info-center { order: -1; width: 100%; margin-bottom: 6px; }
-  .surah-title-th { font-size: 19px; }
-  .surah-title-ar { font-size: 20px; }
+@media (max-width: 900px) {
+  #app { padding: 12px; padding-top: 200px; }
+  header { padding: 14px 14px 10px; }
+  header h1 { font-size: 26px; }
+  .surah-nav-card { padding: 10px 0 0; gap: 10px; }
+  .surah-sub-meta { font-size: 12px; }
   .btn-nav, .btn-sel, .btn-action, .btn-settings { padding: 8px 12px; font-size: 12px; }
+}
+
+@media (max-width: 640px) {
+  #app { padding: 10px; padding-top: 220px; }
+  header { padding: 10px 10px 8px; }
+  header h1 { font-size: 22px; }
+  .surah-nav-card { padding: 8px 0 0; flex-wrap: wrap; gap: 8px; }
+  .surah-info-center { order: -1; width: 100%; margin-bottom: 6px; }
+  .surah-sub-meta { font-size: 12px; }
+  .surah-title-th { font-size: 18px; }
+  .surah-title-ar { font-size: 18px; }
+  .btn-nav, .btn-sel, .btn-action, .btn-settings { padding: 7px 10px; font-size: 12px; }
   .btn-hamburger { display: inline-flex; }
   .nav-actions {
     display: none;
